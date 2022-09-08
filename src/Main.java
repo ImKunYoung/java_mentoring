@@ -29,7 +29,7 @@ public class Main {
         String a = "문자입니다";
         System.out.println(a);
 
-        // 클래스 선언
+        // 객체 선언
         Main main = new Main();
         
         // 함수 호출
