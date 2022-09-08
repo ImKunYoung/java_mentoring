@@ -6,7 +6,7 @@ public class Main {
     }
 
     public void calculate() {
-
+        System.out.println("calculate");
     }
 
     public static void main(String[] args) {
@@ -19,6 +19,7 @@ public class Main {
         System.out.println(a);
 
         Main main = new Main();
+        main.calculate();
 
 
     }
