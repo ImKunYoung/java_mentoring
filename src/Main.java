@@ -40,7 +40,6 @@ public class Main {
 
         main.calculate2(param1, param2);
 
-
     }
 
 }
