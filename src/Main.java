@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Main {
 
     /*Constructor - 클래스 초기화*/
@@ -42,10 +40,7 @@ public class Main {
 
         main.calculate2(param1, param2);
 
-        Scanner scanner = new Scanner(System.in);
-        int i = scanner.nextInt();
-        System.out.println("출력: "+i);
-        // 스캐너를 통해서 숫자를 입력받고 계산기를 만들와라
+
     }
 
 }
