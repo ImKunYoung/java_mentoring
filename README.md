@@ -86,6 +86,7 @@ public class Main {
 |int param1 = 1| • param1 이라는 이름으로 메모리의 x번지에 4byte 할당함. 그리고 이 공간에 1이라는 숫자를 넣어둔 것 <br/> • param1은 변수라고 부름                                                                               |
 |main.calculate2(param1, param2)| • main의 calculate2 함수에 param1과 param2의 값을 넘김 <br/> • () 공간을 파라미터라고 부름                                                                                                 |
 
+<br/>
 
 - 숙제: 키보드를 통해 숫자와 더하기, 곱하기, 나누기 표식을 입력받고 계산된 결과를 출력하기
 
