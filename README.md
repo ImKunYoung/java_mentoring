@@ -28,7 +28,7 @@ https://eungbean.github.io/2018/06/11/How-to-use-markdown/
 
 <br/>
 
-# 1주차 - 자바 기초
+# ✔️ 1주차 - 자바 기초
 
 ```java
 public class Main {
@@ -85,3 +85,8 @@ public class Main {
 |main.calculate()| • Main 클래스 내부에 있는 calculate() 함수를 호출함                                                                                                                                 |
 |int param1 = 1| • param1 이라는 이름으로 메모리의 x번지에 4byte 할당함. 그리고 이 공간에 1이라는 숫자를 넣어둔 것 <br/> • param1은 변수라고 부름                                                                               |
 |main.calculate2(param1, param2)| • main의 calculate2 함수에 param1과 param2의 값을 넘김 <br/> • () 공간을 파라미터라고 부름                                                                                                 |
+
+
+- 숙제: 키보드를 통해 숫자와 더하기, 곱하기, 나누기 표식을 입력받고 계산된 결과를 출력하기
+
+> ex) 입력값: 2 * 4  → 출력값: 8 
