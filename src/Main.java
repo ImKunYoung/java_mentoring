@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main {
 
     /*Constructor - 클래스 초기화*/
@@ -8,7 +10,6 @@ public class Main {
     public void calculate() {
         System.out.println("calculate");
     }
-
     public void calculate2(int param1, int param2) {
         System.out.println("--------calculate2--------");
         System.out.println("param1: "+param1);
@@ -23,6 +24,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("hello world");
 
+        // 변수 선언
         int temp = 1;
         System.out.println("temp: "+temp);
 
@@ -38,8 +40,12 @@ public class Main {
         int param1 = 1;
         int param2 = 4;
 
+        // 파라미터로 값 넘기기
         main.calculate2(param1, param2);
 
+        Scanner scanner = new Scanner(System.in);
+        int i = scanner.nextInt();
+        System.out.println("출력:"+i);
     }
 
 }
