@@ -1,3 +1,5 @@
+package week1;
+
 import java.util.Scanner;
 
 public class Main {
@@ -21,6 +23,12 @@ public class Main {
         System.out.println("나누기 나머지: "+(param1%param2));
     }
 
+    private void extracted() {
+        Scanner scanner = new Scanner(System.in);
+        String i = scanner.next();
+        System.out.println("출력:"+i);
+    }
+
     public static void main(String[] args) {
         System.out.println("hello world");
 
@@ -33,7 +41,7 @@ public class Main {
 
         // 객체 선언
         Main main = new Main();
-        
+
         // 함수 호출
         main.calculate();
 
@@ -43,9 +51,9 @@ public class Main {
         // 파라미터로 값 넘기기
         main.calculate2(param1, param2);
 
-        Scanner scanner = new Scanner(System.in);
-        int i = scanner.nextInt();
-        System.out.println("출력:"+i);
+        main.extracted();
     }
+
+
 
 }
