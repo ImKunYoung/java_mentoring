@@ -5,6 +5,12 @@ import java.util.Scanner;
 
 public class Calculate {
 
+    // 숫자열
+    private ArrayList<Integer> numbers = new ArrayList<>();
+    
+    // 연산 기호
+    private ArrayList<String> symbol = new ArrayList<>();
+
     // 1. 문자열을 입력받는다
     // 2. input 문자열 띄어내기
     // 3. String 으로 입력받은 문자열을 정수형 (int) 타입으로 변환하기
@@ -34,6 +40,7 @@ public class Calculate {
 
             int ascii = (int) input;
             System.out.println(ascii);
+
 
 
 
