@@ -20,7 +20,7 @@ public class Calculator {
     ArrayList<String> seperate() {
         ArrayList<String> inputs = new ArrayList<>();
         StringBuilder temp = new StringBuilder();
-
+        System.out.println();
         for(int i=0; i < this.input.length(); i++) {
             if(this.input.charAt(i)=='*' || this.input.charAt(i)=='-'|| this.input.charAt(i)=='+'|| this.input.charAt(i)=='/') {
                 inputs.add(temp.toString());
@@ -38,21 +38,36 @@ public class Calculator {
     // 3. 계산한다
     ArrayList<String> calculate(ArrayList<String> inputs) {
         inputs = MulDiv(inputs);
-        inputs = PluMin(inputs, true);
+        inputs = PluMin(inputs);
         return inputs;
     }
 
     ArrayList<String> MulDiv(ArrayList<String> inputs) {
         this.printStatus(inputs);
-
-        for(int i=0;i<inputs.size();i++) {
+        for(int i=0; i<inputs.size(); i++) {
+            System.out.println(inputs);
             if(inputs.get(i).equals("*")) {
-                cal_Multiply(inputs);
-            } else if(inputs.get(i).equals("/")) {
-                cal_Divid(inputs);
+                inputs = cal_Multiply(inputs);
+            }
+            if(inputs.get(i).equals("/")) {
+                inputs =  cal_Divid(inputs);
             }
         }
+        return inputs;
+    }
 
+    ArrayList<String> PluMin(ArrayList<String> inputs) {
+        this.printStatus(inputs);
+
+        for(int i=0; i<inputs.size(); i++) {
+            System.out.println(inputs);
+            if(inputs.get(i).equals("+")) {
+                inputs = cal_Plus(inputs);
+            }
+            if(inputs.get(i).equals("-")) {
+                inputs = cal_Minus(inputs);
+            }
+        }
         return inputs;
     }
 
@@ -61,33 +76,15 @@ public class Calculator {
         System.out.println();
     }
 
-    ArrayList<String> MulDiv(ArrayList<String> inputs, boolean hasMulDiv) {
-        this.printStatus(inputs);
-
-        if (!hasMulDiv) return inputs;
-        if(inputs.contains("*")) {
-            inputs = cal_Multiply(inputs);
-            return MulDiv(inputs, true);
-        } else if(inputs.contains("/")) {
-            inputs = cal_Divid(inputs);
-            return MulDiv(inputs, true);
-        } else {
-            return MulDiv(inputs,false);
-        }
+    public static void main(String[] args) {
+        Calculator calculator = new Calculator();
+        calculator.input();
+        ArrayList<String> inputs = calculator.seperate();
+        calculator.calculate(inputs);
     }
-    ArrayList<String> PluMin(ArrayList<String> inputs, boolean hasPluMin) {
-        this.printStatus(inputs);
 
-        if (!hasPluMin) return inputs;
-        if(inputs.contains("+")) {
-            inputs = cal_Plus(inputs);
-            return PluMin(inputs, true);
-        } else if(inputs.contains("-")) {
-            inputs = cal_Minus(inputs);
-            return PluMin(inputs, true);
-        } else {
-            return PluMin(inputs,false);
-        }
+    public void calculate() {
+
     }
 
     ArrayList<String> cal_Plus(ArrayList<String> inputs) {
@@ -151,7 +148,7 @@ public class Calculator {
         }
         return inputs;
     }
-    private ArrayList<String> cal_Divid(ArrayList<String> inputs) {
+    ArrayList<String> cal_Divid(ArrayList<String> inputs) {
         int operIndex = inputs.indexOf("/");
         try {
             if(operIndex-1 > -1 && operIndex+1 < inputs.size()) {
@@ -170,13 +167,6 @@ public class Calculator {
             System.exit(-1);
         }
         return inputs;
-    }
-
-    public static void main(String[] args) {
-        Calculator calculator = new Calculator();
-        calculator.input();
-        ArrayList<String> inputs = calculator.seperate();
-        calculator.calculate(inputs);
     }
 
     public static class CustomException extends Exception {

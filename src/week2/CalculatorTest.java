@@ -30,7 +30,7 @@ public class CalculatorTest {
     @Test
     private void calculate() throws Calculator.CustomException {
         Calculator calculator = new Calculator();
-        calculator.input = "3  /3*6 - 2/4+3*4";
+        calculator.input = "3  /3*6-2/4+3*4";
         ArrayList<String> inputs = calculator.seperate();
         calculator.calculate(inputs);
         inputs.forEach(s -> System.out.print(s));
