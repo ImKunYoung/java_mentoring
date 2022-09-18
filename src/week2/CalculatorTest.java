@@ -41,7 +41,7 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
         calculator.input = "2*4";
         ArrayList<String> inputs = calculator.seperate();
-        calculator.cal_Multiply(inputs);
+        calculator.cal_Multiply(inputs, 2);
         System.out.println(inputs);
     }
 

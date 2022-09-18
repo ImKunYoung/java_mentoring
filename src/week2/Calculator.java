@@ -44,14 +44,16 @@ public class Calculator {
 
     ArrayList<String> MulDiv(ArrayList<String> inputs) {
         this.printStatus(inputs);
-        for(int i=0; i<inputs.size(); i++) {
-            System.out.println(inputs);
+
+        int i=0;
+        while (i<inputs.size()){
             if(inputs.get(i).equals("*")) {
-                inputs = cal_Multiply(inputs);
+                i = cal_Multiply(inputs, i);
             }
             if(inputs.get(i).equals("/")) {
-                inputs =  cal_Divid(inputs);
+                i = cal_Divid(inputs, i);
             }
+            i++;
         }
         return inputs;
     }
@@ -59,14 +61,15 @@ public class Calculator {
     ArrayList<String> PluMin(ArrayList<String> inputs) {
         this.printStatus(inputs);
 
-        for(int i=0; i<inputs.size(); i++) {
-            System.out.println(inputs);
+        int i=0;
+        while (i<inputs.size()){
             if(inputs.get(i).equals("+")) {
-                inputs = cal_Plus(inputs);
+                i = cal_Plus(inputs, i);
             }
             if(inputs.get(i).equals("-")) {
-                inputs = cal_Minus(inputs);
+                i = cal_Minus(inputs, i);
             }
+            i++;
         }
         return inputs;
     }
@@ -87,9 +90,7 @@ public class Calculator {
 
     }
 
-    ArrayList<String> cal_Plus(ArrayList<String> inputs) {
-        int operIndex = inputs.indexOf("+");
-
+    int cal_Plus(ArrayList<String> inputs, int operIndex) {
         try {
             if(operIndex-1 > -1 && operIndex+1 < inputs.size()) {
                 String prev = inputs.get(operIndex-1);
@@ -106,10 +107,9 @@ public class Calculator {
             System.out.println("잘못입력하셨습니다");
             System.exit(-1);
         }
-        return inputs;
+        return operIndex-1;
     }
-    ArrayList<String> cal_Minus(ArrayList<String> inputs) {
-        int operIndex = inputs.indexOf("-");
+    int cal_Minus(ArrayList<String> inputs, int operIndex) {
         try {
             if(operIndex-1 > -1 && operIndex+1 < inputs.size()) {
                 String prev = inputs.get(operIndex-1);
@@ -126,10 +126,9 @@ public class Calculator {
             System.out.println("잘못입력하셨습니다");
             System.exit(-1);
         }
-        return inputs;
+        return operIndex-1;
     }
-    ArrayList<String> cal_Multiply(ArrayList<String> inputs) {
-        int operIndex = inputs.indexOf("*");
+    int cal_Multiply(ArrayList<String> inputs, int operIndex) {
         try {
             if(operIndex-1 > -1 && operIndex+1 < inputs.size()) {
                 String prev = inputs.get(operIndex-1);
@@ -141,15 +140,15 @@ public class Calculator {
 
                 inputs.remove(operIndex+1);
                 inputs.remove(operIndex-1);
+
             } else throw new CustomException("잘못입력하셨습니다");
         } catch (Exception e) {
             System.out.println("잘못입력하셨습니다");
             System.exit(-1);
         }
-        return inputs;
+        return operIndex - 1;
     }
-    ArrayList<String> cal_Divid(ArrayList<String> inputs) {
-        int operIndex = inputs.indexOf("/");
+    int cal_Divid(ArrayList<String> inputs, int operIndex) {
         try {
             if(operIndex-1 > -1 && operIndex+1 < inputs.size()) {
                 String prev = inputs.get(operIndex-1);
@@ -166,7 +165,7 @@ public class Calculator {
             System.out.println("잘못입력하셨습니다");
             System.exit(-1);
         }
-        return inputs;
+        return operIndex - 1;
     }
 
     public static class CustomException extends Exception {
