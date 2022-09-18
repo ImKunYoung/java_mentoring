@@ -20,7 +20,7 @@ public class CalculatorTest {
         System.out.println("sf: "+inputs.get(2));
         inputs.sort((o1, o2) -> o2.compareTo(o1));
 
-        inputs.forEach(s -> System.out.print(s));
+        inputs.forEach(System.out::print);
 
         System.out.println(inputs.size());
 
@@ -28,20 +28,20 @@ public class CalculatorTest {
 
 
     @Test
-    private void calculate() throws Calculator.CustomException {
+    private void calculate() {
         Calculator calculator = new Calculator();
         calculator.input = "3  /3*6-2/4+3*4";
         ArrayList<String> inputs = calculator.seperate();
         calculator.calculate(inputs);
-        inputs.forEach(s -> System.out.print(s));
+        inputs.forEach(System.out::print);
     }
 
     @Test
-    private void cal_Mul() throws Calculator.CustomException {
+    private void cal_Mul() {
         Calculator calculator = new Calculator();
         calculator.input = "2*4";
         ArrayList<String> inputs = calculator.seperate();
-        calculator.cal_Multiply(inputs, 2);
+//        calculator.cal_Multiply(inputs, 2, 1, 3);
         System.out.println(inputs);
     }
 
