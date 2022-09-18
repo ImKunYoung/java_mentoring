@@ -9,7 +9,6 @@ public class Calculator {
 
     String input;
 
-
     /*1. 문자열을 입력받는다*/
     private void input() {
         System.out.print("값을 입력하세요!: ");
@@ -20,7 +19,7 @@ public class Calculator {
     ArrayList<String> seperate() {
         ArrayList<String> inputs = new ArrayList<>();
         StringBuilder temp = new StringBuilder();
-        System.out.println();
+
         for(int i=0; i < this.input.length(); i++) {
             if(this.input.charAt(i)=='*' || this.input.charAt(i)=='-'|| this.input.charAt(i)=='+'|| this.input.charAt(i)=='/') {
                 inputs.add(temp.toString());
@@ -35,49 +34,33 @@ public class Calculator {
 
         return inputs;
     }
-    // 3. 계산한다
+    /*3. 계산한다*/
     String calculate(ArrayList<String> inputs) {
-        inputs = MulDiv(inputs);
-        inputs = PluMin(inputs);
+        this.MulDiv(inputs);
+        this.PluMin(inputs);
         return inputs.get(0);
     }
 
     ArrayList<String> MulDiv(ArrayList<String> inputs) {
-        this.printStatus(inputs);
-
         int i=0;
         while (i<inputs.size()){
-            if(inputs.get(i).equals("*")) {
-                i = cal_Multiply(inputs, i);
-            }
-            if(inputs.get(i).equals("/")) {
-                i = cal_Divid(inputs, i);
-            }
+            if(inputs.get(i).equals("*")) i = cal_Multiply(inputs, i);
+            if(inputs.get(i).equals("/")) i = cal_Divid(inputs, i);
             i++;
         }
         return inputs;
     }
-
     ArrayList<String> PluMin(ArrayList<String> inputs) {
-        this.printStatus(inputs);
-
         int i=0;
         while (i<inputs.size()){
-            if(inputs.get(i).equals("+")) {
-                i = cal_Plus(inputs, i);
-            }
-            if(inputs.get(i).equals("-")) {
-                i = cal_Minus(inputs, i);
-            }
+            if(inputs.get(i).equals("+")) i = cal_Plus(inputs, i);
+            if(inputs.get(i).equals("-")) i = cal_Minus(inputs, i);
             i++;
         }
         return inputs;
     }
 
-    private void printStatus(ArrayList<String> inputs) {
-        inputs.forEach(System.out::print);
-        System.out.println();
-    }
+
 
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
@@ -87,7 +70,16 @@ public class Calculator {
         System.out.println("result: "+result);
     }
 
+    static int i = 0;
+    private void printStatus(ArrayList<String> inputs) {
+        System.out.print(i+": ");
+        inputs.forEach(System.out::print);
+        System.out.println();
+        i++;
+    }
+
     int cal_Plus(ArrayList<String> inputs, int operIndex) {
+        this.printStatus(inputs);
         try {
             if(operIndex-1 > -1 && operIndex+1 < inputs.size()) {
                 String prev = inputs.get(operIndex-1);
@@ -107,6 +99,7 @@ public class Calculator {
         return operIndex-1;
     }
     int cal_Minus(ArrayList<String> inputs, int operIndex) {
+        this.printStatus(inputs);
         try {
             if(operIndex-1 > -1 && operIndex+1 < inputs.size()) {
                 String prev = inputs.get(operIndex-1);
@@ -126,6 +119,7 @@ public class Calculator {
         return operIndex-1;
     }
     int cal_Multiply(ArrayList<String> inputs, int operIndex) {
+        this.printStatus(inputs);
         try {
             if(operIndex-1 > -1 && operIndex+1 < inputs.size()) {
                 String prev = inputs.get(operIndex-1);
@@ -137,7 +131,6 @@ public class Calculator {
 
                 inputs.remove(operIndex+1);
                 inputs.remove(operIndex-1);
-
             } else throw new CustomException("잘못입력하셨습니다");
         } catch (Exception e) {
             System.out.println("잘못입력하셨습니다");
@@ -146,6 +139,7 @@ public class Calculator {
         return operIndex - 1;
     }
     int cal_Divid(ArrayList<String> inputs, int operIndex) {
+        this.printStatus(inputs);
         try {
             if(operIndex-1 > -1 && operIndex+1 < inputs.size()) {
                 String prev = inputs.get(operIndex-1);
