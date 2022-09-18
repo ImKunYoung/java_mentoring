@@ -36,10 +36,10 @@ public class Calculator {
         return inputs;
     }
     // 3. 계산한다
-    ArrayList<String> calculate(ArrayList<String> inputs) {
+    String calculate(ArrayList<String> inputs) {
         inputs = MulDiv(inputs);
         inputs = PluMin(inputs);
-        return inputs;
+        return inputs.get(0);
     }
 
     ArrayList<String> MulDiv(ArrayList<String> inputs) {
@@ -83,11 +83,8 @@ public class Calculator {
         Calculator calculator = new Calculator();
         calculator.input();
         ArrayList<String> inputs = calculator.seperate();
-        calculator.calculate(inputs);
-    }
-
-    public void calculate() {
-
+        String result = calculator.calculate(inputs);
+        System.out.println("result: "+result);
     }
 
     int cal_Plus(ArrayList<String> inputs, int operIndex) {
